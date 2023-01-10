@@ -1,0 +1,88 @@
+<html>
+<head>
+  <title>getElementById example</title>
+</head>
+<script>
+var character=new Array("１２じ","１じ","２じ","３じ","４じ","５じ","６じ","７じ","８じ","９じ","１０じ","１１じ","１２じ","１２じ３０ふん","１じ３０ふん","２じ３０ふん","３じ３０ふん","４じ３０ふん","５じ３０ふん","６じ３０ふん","７じ３０ふん","８じ３０ふん","９じ３０ふん","１０じ３０ふん","１１じ３０ふん")
+var imgage=new Array("1.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png","9.png","10.png","11.png","12.png","13.png","14.png","15.png","16.png","17.png","18.png","19.png","21.png","22.png","23.png","24.png")
+var car=new Array(
+"https://www.townnews.co.jp/0206/images/a001158740_01.jpg",
+"https://www.morita119.jp/fire_engine/chemical/img/001a.jpg",
+"https://www.lnews.jp/images/2019/11/20191113yubin.jpg",
+"https://prcdn.freetls.fastly.net/release_image/4858/751/4858-751-4a5eb33a405caae53ed14af509609c53-1281x960.jpg?format=jpeg&auto=webp&quality=85%2C65&width=1950&height=1350&fit=bounds",
+"https://t.pimg.jp/074/376/823/5/74376823.jpg	",
+"",
+"",
+)
+var num=0
+
+function changeColor() {
+  var elem1 = document.getElementById('char');
+  var elem2 = document.getElementById('image');
+  var elem3 = document.getElementById('car');
+  if(num==character.length-1){
+    num=0
+  }else{
+    num++
+  }
+    elem1.textContent = character[num];
+    elem2.src = "./img/"+num+".png";
+    elem3.src = car[num];
+
+    // 発言を再生
+    const uttr = new SpeechSynthesisUtterance()
+    uttr.text = character[num]; //テキスト
+    window.speechSynthesis.speak(uttr)
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
+body {
+    background-color: #eeeeee;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.13em;
+    line-height: 1.6em
+}
+
+
+#char {
+    text-align: center;
+    position: relative;
+    width: 90%
+    height: 20px;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    padding-top: 20px;
+   padding-bottom: 20px;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.13em;
+    line-height: 1.6em
+}
+#image {
+ text-align: center;
+    position: relative;
+}
+
+p {
+  font-size:25;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+</style>
+
+<body onclick="changeColor()">
+
+
+ <div class="box">   
+    <div class="block1">
+        <p id="char">Some text here</p>
+    </div>
+    <div class="block2">
+	<img id="image" src="./img/0.png" width="200" hight="200">
+    </div>
+    <div class="block3">
+ 	<img id="car" width="200" hight=200>
+    </div>
+</div>
+
+</body>
+</html>
